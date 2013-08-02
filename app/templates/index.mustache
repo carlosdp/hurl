@@ -14,7 +14,9 @@
 
     {{^ next_hurl}}
       {{# hurl?}}
-          <a href="/" style="display:none;" id="page-next" title="next">&rang;</a>
+        {{# logged_in?}}
+          <a href="/" id="page-next" title="next">&rang;</a>
+        {{/ logged_in?}}
       {{/ hurl?}}
     {{/ next_hurl}}
 

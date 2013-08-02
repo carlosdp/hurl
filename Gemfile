@@ -9,7 +9,7 @@ gem 'curb',      '~>0.7.8'
 gem 'coderay',   '~>0.8.357'
 gem 'pg'
 
-gem 'sinatra_auth_github', '~>0.13'
+gem 'sinatra_auth_github'
 
 group :development do
   gem 'shotgun'

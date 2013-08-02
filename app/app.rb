@@ -22,12 +22,13 @@ module Hurl
 
     enable :sessions
 
-    set :github_options, { :client_id    => ENV['GITHUB_OAUTH_CLIENT_ID'],
-                           :secret       => ENV['GITHUB_OAUTH_SECRET'],
-                           :scopes       => '',
-                           :callback_url => '/login/callback/' }
-
     register ::Sinatra::Auth::Github
+
+    set :github_options, { :client_id    => ENV['GITHUB_CLIENT_ID'],
+                           :secret       => ENV['GITHUB_CLIENT_SECRET'],
+                           :scopes       => '',
+                           :callback_url => '/login/callback'}
+
 
     def initialize(*args)
       super
@@ -51,6 +52,21 @@ module Hurl
     get '/' do
       @hurl = params
       mustache :index
+    end
+
+    get '/login/?' do
+      authenticate!
+      redirect '/'
+    end
+
+    get '/login/callback/?' do
+      authenticate!
+      redirect '/'
+    end
+
+    get '/logout/?' do
+      logout!
+      redirect '/'
     end
 
     get '/hurls/?' do
