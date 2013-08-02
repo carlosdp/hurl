@@ -11,6 +11,6 @@ gem 'pg'
 
 gem 'sinatra_auth_github', '~>0.10.0'
 
-group :test do
+group :development do
   gem 'shotgun'
 end
